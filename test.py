@@ -8,12 +8,12 @@ gmsh.initialize(sys.argv)
 gmsh.option.setNumber("General.Terminal", 1)
 print(gmsh.option.getNumber("Mesh.Algorithm"))
 
-gmsh.open("cube.msh")
+gmsh.open("cube2d.msh")
 
 model = gmsh.model
 
 print("Nodes")
-tags, coord, _ = model.mesh.getNodes(3,1)
+tags, coord, _ = model.mesh.getNodes(2,-1)
 print(tags)
 print(coord)
 
@@ -25,5 +25,6 @@ print (coord2)
 gmsh.finalize()
 
 import matplotlib.pyplot as plt
-
-
+plt.figure(0)
+plt.plot(coord2[:,0],coord2[:,1],'b.')
+plt.show()
